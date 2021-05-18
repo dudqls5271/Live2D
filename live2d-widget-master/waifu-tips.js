@@ -32,7 +32,7 @@ function loadWidget(config) {
 	setTimeout(() => {
 		document.getElementById("waifu").style.bottom = 0;
 	}, 0);
-
+ 
 	function randomSelection(obj) {
 		return Array.isArray(obj) ? obj[Math.floor(Math.random() * obj.length)] : obj;
 	}
@@ -40,7 +40,7 @@ function loadWidget(config) {
 	let userAction = false,
 		userActionTimer,
 		messageTimer,
-		messageArray = ["好久不见，日子过得好快呢……", "大坏蛋！你都多久没理人家了呀，嘤嘤嘤～", "嗨～快来逗我玩吧！", "拿小拳拳锤你胸口！", "记得把小家加入 Adblock 白名单哦！"];
+		messageArray = ["오랜만이에요. 시간이 참 빨리 가죠?", "나쁜 놈! 너 안 본 지 얼마나 됐냐!", "하이~ 놀려줘!",];
 	window.addEventListener("mousemove", () => userAction = true);
 	window.addEventListener("keydown", () => userAction = true);
 	setInterval(() => {
@@ -95,24 +95,24 @@ function loadWidget(config) {
 		let text;
 		if (location.pathname === "/") { // 如果是主页
 			const now = new Date().getHours();
-			if (now > 5 && now <= 7) text = "早上好！一日之计在于晨，美好的一天就要开始了。";
-			else if (now > 7 && now <= 11) text = "上午好！工作顺利嘛，不要久坐，多起来走动走动哦！";
-			else if (now > 11 && now <= 13) text = "中午了，工作了一个上午，现在是午餐时间！";
-			else if (now > 13 && now <= 17) text = "午后很容易犯困呢，今天的运动目标完成了吗？";
-			else if (now > 17 && now <= 19) text = "傍晚了！窗外夕阳的景色很美丽呢，最美不过夕阳红～";
-			else if (now > 19 && now <= 21) text = "晚上好，今天过得怎么样？";
-			else if (now > 21 && now <= 23) text = ["已经这么晚了呀，早点休息吧，晚安～", "深夜时要爱护眼睛呀！"];
+			if (now > 5 && now <= 7) text = "좋은 아침!";
+			else if (now > 7 && now <= 11) text = "오래 앉아있지 말고 많이 움직여!";
+			else if (now > 11 && now <= 13) text = "점심시간이야!! 일하지 말고 밥 먹어!";
+			else if (now > 13 && now <= 17) text = "식곤증 무섭죠..";
+			else if (now > 17 && now <= 19) text = "조금 있으면 퇴근 시간 입니다!";
+			else if (now > 19 && now <= 21) text = "오늘 하루는 어떻게 지냈어요?";
+			else if (now > 21 && now <= 23) text = ["벌써 시간이 이렇게 됬네요! 잘자요!", "저녁에는 방에 불을 키고 하세요!"];
 			else text = "你是夜猫子呀？这么晚还不睡觉，明天起的来嘛？";
 		} else if (document.referrer !== "") {
 			const referrer = new URL(document.referrer),
 				domain = referrer.hostname.split(".")[1];
-			if (location.hostname === referrer.hostname) text = `欢迎阅读<span>「${document.title.split(" - ")[0]}」</span>`;
-			else if (domain === "baidu") text = `Hello！来自 百度搜索 的朋友<br>你是搜索 <span>${referrer.search.split("&wd=")[1].split("&")[0]}</span> 找到的我吗？`;
-			else if (domain === "so") text = `Hello！来自 360搜索 的朋友<br>你是搜索 <span>${referrer.search.split("&q=")[1].split("&")[0]}</span> 找到的我吗？`;
-			else if (domain === "google") text = `Hello！来自 谷歌搜索 的朋友<br>欢迎阅读<span>「${document.title.split(" - ")[0]}」</span>`;
-			else text = `Hello！来自 <span>${referrer.hostname}</span> 的朋友`;
+			if (location.hostname === referrer.hostname) text = `어서오세요!<span>「${document.title.split(" - ")[0]}」</span>`;
+			else if (domain === "baidu") text = `Hello！baidu<br>에서 검색 했어? <span>${referrer.search.split("&wd=")[1].split("&")[0]}</span> 找到的我吗？`;
+			else if (domain === "so") text = `Hello！360<br>에서 검색 했어? <span>${referrer.search.split("&q=")[1].split("&")[0]}</span> 找到的我吗？`;
+			else if (domain === "google") text = `Hello！google<br>에서 검색 했어?<span>「${document.title.split(" - ")[0]}」</span>`;
+			else text = `Hello！에서 <span>${referrer.hostname}</span> 친구!`;
 		} else {
-			text = `欢迎阅读<span>「${document.title.split(" - ")[0]}」</span>`;
+			text = `어서오세요! <span>「${document.title.split(" - ")[0]}」</span>`;
 		}
 		showMessage(text, 7000, 8);
 	})();
@@ -253,7 +253,7 @@ function initWidget(config, apiPath) {
 		};
 	}
 	document.body.insertAdjacentHTML("beforeend", `<div id="waifu-toggle">
-			<span>看板娘</span>
+			<span>간판 아가씨!?</span>
 		</div>`);
 	const toggle = document.getElementById("waifu-toggle");
 	toggle.addEventListener("click", () => {
